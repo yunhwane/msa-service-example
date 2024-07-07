@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.http.ResponseEntity;
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/")
+@RequestMapping("/user-service")
 public class UserController {
 
     private final Environment env;
@@ -28,9 +28,9 @@ public class UserController {
 
     @RequestMapping("/health-check")
     public String hello() {
-        return "It`s working in user-service";
-    }
+        return "It`s working in user-service Port Number: " + env.getProperty("local.server.port");
 
+    }
     @RequestMapping("/welcome")
     public String greeting() {
         //return env.getProperty("greeting.message");

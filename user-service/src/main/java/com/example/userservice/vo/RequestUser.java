@@ -14,5 +14,4 @@ public class RequestUser {
     private String name;
     private String pwd;
 
-
 }
