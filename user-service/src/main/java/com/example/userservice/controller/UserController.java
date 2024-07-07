@@ -55,7 +55,7 @@ public class UserController {
     public ResponseEntity<?> getUsers() {
         Iterable<User> userList = userService.getUserByAll();
 
-        List<ResponseUser>  responseUsers = new ArrayList<>();
+        List<ResponseUser> responseUsers = new ArrayList<>();
 
         userList.forEach(v -> {
             responseUsers.add(new ModelMapper().map(v, ResponseUser.class));
@@ -64,5 +64,12 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.OK).body(responseUsers);
     }
 
+
+    @GetMapping("/users/{userId}")
+    public ResponseEntity<?> getUserByUserId(@PathVariable String userId) {
+        UserDto userDto = userService.getUserByUserId(userId);
+        ResponseUser responseUser =  new ModelMapper().map(userDto, ResponseUser.class);
+        return ResponseEntity.status(HttpStatus.OK).body(responseUser);
+    }
 
 }
