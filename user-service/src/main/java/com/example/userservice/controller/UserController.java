@@ -28,7 +28,9 @@ public class UserController {
 
     @RequestMapping("/health-check")
     public String hello() {
-        return "It`s working in user-service Port Number: " + env.getProperty("local.server.port");
+        return "It`s working in user-service Port Number: "
+                + env.getProperty("local.server.port") +
+                ", Token Secret: " + env.getProperty("token.secret");
 
     }
     @RequestMapping("/welcome")

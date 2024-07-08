@@ -53,6 +53,7 @@ public class WebSecurity {
         http.authorizeHttpRequests(authorize ->
                         authorize.requestMatchers(new MvcRequestMatcher(introspector, "/**")).permitAll()
                                  .requestMatchers(new MvcRequestMatcher(introspector, "/users/**")).permitAll()
+                                 .requestMatchers(new MvcRequestMatcher(introspector, "/actuator/**")).permitAll()
 //                                requestMatchers(new MvcRequestMatcher.Builder(introspector).pattern(HttpMethod.GET, "/users/**")).permitAll()
 //                                .requestMatchers(new MvcRequestMatcher(introspector, "/greeting")).permitAll()
 //                                .requestMatchers(new MvcRequestMatcher(introspector, "/welcome")).permitAll()

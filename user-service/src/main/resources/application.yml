@@ -31,5 +31,9 @@ eureka:
 greeting:
   message: Hello from user-service
 
-token:
-  secret: fasdfhjoasdijfiosdajfioasdjfiojasdiofjadsiofjioasdjfioasdjfiojaiowafdasfasfdasfdasfdasfasdfadsfasdfdas
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh, health, beans

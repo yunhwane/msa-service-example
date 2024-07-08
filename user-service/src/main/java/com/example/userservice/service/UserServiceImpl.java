@@ -1,6 +1,7 @@
 package com.example.userservice.service;
 
 
+import com.example.userservice.client.OrderServiceClient;
 import com.example.userservice.domain.User;
 import com.example.userservice.dto.UserDto;
 import com.example.userservice.repository.UserRepository;
@@ -21,6 +22,7 @@ public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
+    private final OrderServiceClient orderServiceClient;
 
     @Override
     public UserDto createUser(UserDto userDto) {
@@ -42,7 +44,9 @@ public class UserServiceImpl implements UserService {
         );
 
         UserDto userDto = new ModelMapper().map(user, UserDto.class);
-        List<ResponseOrder> orders = new ArrayList<>();
+
+
+        List<ResponseOrder> orders = orderServiceClient.getOrders(userId);
         userDto.setOrders(orders);
 
         return userDto;

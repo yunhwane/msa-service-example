@@ -11,10 +11,14 @@ eureka:
 token:
   secret: fasdfhjoasdijfiosdajfioasdjfiojasdiofjadsiofjioasdjfioasdjfiojaiowafdasfasfdasfdasfdasfasdfadsfasdfdas
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh, health, beans, httpexchanges
 spring:
   application:
     name: api-gateway-service
-
   cloud:
     gateway:
         routes:
@@ -59,3 +63,11 @@ spring:
               - RemoveRequestHeader=Cookie
               - RewritePath=/user-service/(?<segment>.*), /${segment}
               - AuthorizationHeaderFilter
+          - id: user-service
+            uri: lb://USER-SERVICE
+            predicates:
+              - Path=/user-service/actuator/**
+              - Method=GET,POST
+            filters:
+              - RemoveRequestHeader=Cookie
+              - RewritePath=/user-service/(?<segment>.*), /${segment}
