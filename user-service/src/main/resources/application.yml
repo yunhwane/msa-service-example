@@ -32,5 +32,4 @@ greeting:
   message: Hello from user-service
 
 token:
-  secret: fasdfhjoasdijfiosdajfioasdjfiojasdiofjadsiofjioasdjfioasdjfiojaiow
-  expiration: 86400000
+  secret: fasdfhjoasdijfiosdajfioasdjfiojasdiofjadsiofjioasdjfioasdjfiojaiowafdasfasfdasfdasfdasfasdfadsfasdfdas
